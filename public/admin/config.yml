@@ -1,0 +1,1778 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: blog
+    label: Blogs
+    folder: cms/blog
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: paragraph
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_blog-image
+        label: blog-image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_high-light-text
+        label: high-light text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_kernfrage
+        label: kernfrage
+        widget: string
+        required: false
+      - hint: ''
+        name: f_kapital-1
+        label: kapital 1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_kapital2
+        label: kapital2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_paragraph2
+        label: paragraph2
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_kapital3
+        label: kapital3
+        widget: string
+        required: false
+      - hint: ''
+        name: f_paragraph3
+        label: paragraph3
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_image1
+        label: image1
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_kapital4
+        label: Kapital4
+        widget: string
+        required: false
+      - hint: ''
+        name: f_kapital-5
+        label: paragraph4
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_paragraph4
+        label: kapital5
+        widget: string
+        required: false
+      - hint: ''
+        name: f_paragraph5
+        label: paragraph5
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_preview
+        label: preview
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: blog
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[blog].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: projekt_collection
+    label: Projekt collections
+    folder: cms/projekt-collection
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: project-metainfo1
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_descripttion
+        label: descripttion
+        widget: string
+        required: false
+      - hint: ''
+        name: f_preview-image
+        label: preview-image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_heading-zitat
+        label: heading-zitat
+        widget: string
+        required: false
+      - hint: ''
+        name: f_original-image
+        label: original-image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_original-image2
+        label: original-image2
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_original-image3
+        label: original-image3
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_my-role-2
+        label: my role
+        widget: string
+        required: false
+      - hint: ''
+        name: f_tag-link
+        label: tag-link
+        widget: relation
+        required: false
+        collection: tag_collection
+        value_field: cms/tag-collection/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_project-metainfo2-4
+        label: project-metainfo2
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_problem-list
+        label: Problem-list
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_process-text
+        label: process-text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_geschaftliche-auswirkungen-text
+        label: Geschäftliche Auswirkungen-text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_herausforderungen-und-losungen-text
+        label: Herausforderungen und Lösungen-text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-1
+        label: highlight-1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-image-1
+        label: highlight-image-1
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_highlight-description-1
+        label: highlight-description-1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-2
+        label: highlight-2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-image-2
+        label: highlight-image-2
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_highlight-description-2
+        label: highlight-description-2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-3
+        label: highlight-3
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-image-3
+        label: highlight-image-3
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_highlight-description-3
+        label: highlight-description-3
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-4
+        label: highlight-4
+        widget: string
+        required: false
+      - hint: ''
+        name: f_highlight-image-4
+        label: highlight-image-4
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_highlight-description-4
+        label: highlight-description-4
+        widget: string
+        required: false
+      - hint: ''
+        name: f_flussdiagramm
+        label: flussdiagramm
+        widget: string
+        required: false
+      - hint: ''
+        name: f_flussdiagramm-preview
+        label: flussdiagramm-preview
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_extra-projectimage
+        label: extra-projectimage
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_multi-image
+        label: multi-image
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: projekt-collection
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[projekt-collection].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: galerie_image
+    label: Galerie-images
+    folder: cms/galerie-image
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_galerie
+        label: galerie
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: galerie-image
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[galerie-image].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: tag_collection
+    label: Tag-collections
+    folder: cms/tag-collection
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: tag
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: tag-collection
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[tag-collection].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: HAN., key: 21b859'
+            label: Text
+            name: 21b859
+            widget: string
+          - hint: 'Original text: MENU, key: 240d5f'
+            label: Text
+            name: 240d5f
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: Insights, key: 24589bfb'
+            label: Text
+            name: 24589bfb
+            widget: string
+          - hint: 'Original text: About, key: 3c2336d'
+            label: Text
+            name: 3c2336d
+            widget: string
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: 'Original text: Tel: 01744788116, key: -7dee06ec'
+            label: Text
+            name: '-7dee06ec'
+            widget: string
+          - hint: 'Original text: email: hanchen.xing@outlook.com, key: -1b325f69'
+            label: Text
+            name: '-1b325f69'
+            widget: string
+          - hint: 'Original text: web(new)：hanchenxing.io, key: -47ae4ffc'
+            label: Text
+            name: '-47ae4ffc'
+            widget: string
+          - hint: 'Original text: web( - 2019)：hanchenxing.com, key: -4e3c05f6'
+            label: Text
+            name: '-4e3c05f6'
+            widget: string
+          - hint: 'Original text: Produkt, key: 50c665c7'
+            label: Text
+            name: 50c665c7
+            widget: string
+          - hint: 'Original text: Über uns, key: 38557d8d'
+            label: Text
+            name: 38557d8d
+            widget: string
+          - hint: 'Original text: Häufige Fragen, key: -45702d9f'
+            label: Text
+            name: '-45702d9f'
+            widget: string
+          - hint: 'Original text: Kontakt, key: 43219700'
+            label: Text
+            name: '43219700'
+            widget: string
+          - hint: 'Original text: Telefon:, key: -4d3d3121'
+            label: Text
+            name: '-4d3d3121'
+            widget: string
+          - hint: 'Original text: 0049 041049659628, key: 4559e405'
+            label: Text
+            name: '4559e405'
+            widget: string
+          - hint: 'Original text: E-mail:, key: -6afa4225'
+            label: Text
+            name: '-6afa4225'
+            widget: string
+          - hint: 'Original text: kundenservice@drcomoi.de, key: 29810e36'
+            label: Text
+            name: '29810e36'
+            widget: string
+          - hint: 'Original text: MENÜ, key: 240de6'
+            label: Text
+            name: 240de6
+            widget: string
+          - hint: 'Original text: Heading, key: -6d5fea1e'
+            label: Text
+            name: '-6d5fea1e'
+            widget: string
+          - hint: 'Original text: Design drives possibilities., key: 50740cd2'
+            label: Text
+            name: 50740cd2
+            widget: string
+          - hint: 'Original text: What’s a Rich Text element?, key: -3c0dda4d'
+            label: Text
+            name: '-3c0dda4d'
+            widget: string
+          - hint: >-
+              Original text: The rich text element allows you to create and
+              format headings, paragraphs, blockquotes, images, and video all in
+              one place instead of having to add and format them individually.
+              Just double-click and easily create content., key: 2e633c6a
+            label: Text
+            name: 2e633c6a
+            widget: text
+          - hint: 'Original text: Static and dynamic content editing, key: 57fa6135'
+            label: Text
+            name: 57fa6135
+            widget: string
+          - hint: >-
+              Original text: A rich text element can be used with static or
+              dynamic content. For static content, just drop it into any page
+              and begin editing. For dynamic content, add a rich text field to
+              any collection and then connect a rich text element to that field
+              in the settings panel. Voila!, key: -a016b40
+            label: Text
+            name: '-a016b40'
+            widget: text
+          - hint: >-
+              Original text: How to customize formatting for each rich text,
+              key: -4bffb26e
+            label: Text
+            name: '-4bffb26e'
+            widget: string
+          - hint: >-
+              Original text: Headings, paragraphs, blockquotes, figures, images,
+              and figure captions can all be styled after a class is added to
+              the rich text element using the "When inside of" nested selector
+              system., key: -43ba1153
+            label: Text
+            name: '-43ba1153'
+            widget: text
+          - hint: 'Original text: HEY!, key: 21c8a5'
+            label: Text
+            name: 21c8a5
+            widget: string
+          - hint: >-
+              Original text: Ich bin Han, ein UX und UI Designer, verantwortlich
+              für das Design von digitalen Produkten für Unternehmen, , key:
+              -7227cb9e
+            label: Text
+            name: '-7227cb9e'
+            widget: text
+          - hint: >-
+              Original text: die komplexe digitale Business- oder medizinische
+              Webanwendungen, key: 4c241d53
+            label: Text
+            name: 4c241d53
+            widget: string
+          - hint: 'Original text:  haben., key: 53c4659c'
+            label: Text
+            name: 53c4659c
+            widget: string
+          - hint: 'Original text: Lebenslauf-Download, key: -1d0428f2'
+            label: Text
+            name: '-1d0428f2'
+            widget: string
+          - hint: 'Original text: HEY :), key: 7ed236d3'
+            label: Text
+            name: 7ed236d3
+            widget: string
+          - hint: >-
+              Original text: Herzlich Willkommen auf meiner Seite! Ich freue
+              mich, dass du vorbeischaust., key: 59dabf1f
+            label: Text
+            name: 59dabf1f
+            widget: string
+          - hint: >-
+              Original text: Als erfahrener Produkt- und UX Designer gestalte
+              ich digitale Produkte, die den Unterschied machen – spezialisiert
+              auf komplexe Business- und medizinische Webanwendungen., key:
+              4c46b4c
+            label: Text
+            name: 4c46b4c
+            widget: text
+          - hint: 'Original text: Resume Download, key: 35b1df1b'
+            label: Text
+            name: 35b1df1b
+            widget: string
+          - hint: >-
+              Original text: Hinter jedem herausragenden digitalen Produkt steht
+              ein durchdachter und optimierter User Flow., key: 64a584d8
+            label: Text
+            name: 64a584d8
+            widget: text
+          - hint: 'Original text: Projekt, key: 50c8e3f1'
+            label: Text
+            name: 50c8e3f1
+            widget: string
+          - hint: 'Original text: 2021-2023, key: 1abcb7cf'
+            label: Text
+            name: 1abcb7cf
+            widget: string
+          - hint: 'Original text: (4), key: 9c9d'
+            label: Text
+            name: 9c9d
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Ablaufdiagramm, key: -44e3a7f'
+            label: Text
+            name: '-44e3a7f'
+            widget: string
+          - hint: 'Original text: No., key: 1326d'
+            label: Text
+            name: 1326d
+            widget: string
+          - hint: 'Original text: Beschreibung, key: 41cbf06d'
+            label: Text
+            name: 41cbf06d
+            widget: string
+          - hint: 'Original text: Herunterladen, key: -7fba3abb'
+            label: Text
+            name: '-7fba3abb'
+            widget: string
+          - hint: 'Original text: 01, key: 601'
+            label: Text
+            name: '601'
+            widget: string
+          - hint: 'Original text: eTerminal , key: 51c67e3f'
+            label: Text
+            name: 51c67e3f
+            widget: string
+          - hint: 'Original text: Patienten-Anmeldesystem, key: -3bb9a3e8'
+            label: Text
+            name: '-3bb9a3e8'
+            widget: string
+          - hint: >-
+              Original text: eTerminal ist ein innovatives Produkt, das den
+              Prozess der Terminbuchung und Anmeldung für Patienten und
+              Ärztepraxen vereinfacht. Auf der Startseite können sich Patienten
+              entweder mit ihrer Gesundheitskarte oder, falls sie keine haben,
+              mit ihrem Namen und Geburtsdatum anmelden. Patienten, die bereits
+              einen Termin haben, können sich direkt anmelden, um ihre heutigen
+              Termine zu sehen und zu entscheiden, ob sie ins Behandlungszimmer
+              oder ins Wartezimmer gehen sollen. Patienten, die einen Termin für
+              den gleichen Tag benötigen, können über das eTerminal auch einen
+              Akutsprechstunden-Termin buchen, falls verfügbar. Dies ermöglicht
+              auch spontane Arztbesuche. Patienten ohne Gesundheitskarte können
+              sich auch anmelden und Termine buchen, indem sie einfach ihren
+              Namen und ihr Geburtsdatum angeben. Insgesamt bietet das eTerminal
+              eine strukturierte und benutzerfreundliche Oberfläche für die
+              Terminverwaltung, sowohl für Patienten mit als auch ohne
+              Gesundheitskarte., key: 319dbbf1
+            label: Text
+            name: 319dbbf1
+            widget: text
+          - hint: 'Original text: 02, key: 602'
+            label: Text
+            name: '602'
+            widget: string
+          - hint: 'Original text: Ticket-System , key: -bf745f0'
+            label: Text
+            name: '-bf745f0'
+            widget: string
+          - hint: >-
+              Original text: Ticket-Plattform für
+              Support-Mitarbeiter-Kommunikation, key: 11fd1213
+            label: Text
+            name: 11fd1213
+            widget: string
+          - hint: >-
+              Original text: Ticket-System ist eine SaaS-Plattform, die speziell
+              für Support-Mitarbeiter entwickelt wurde, um Kundenanrufe zu
+              dokumentieren und die Zusammenarbeit zwischen den
+              Support-Mitarbeitern zu ermöglichen. Ein typisches
+              Nutzungsszenario wäre, dass ein Rezeptionsmitarbeiter einen
+              Kundenanruf entgegennimmt und kurz dokumentiert, worum es bei dem
+              Anruf ging. Dieser Mitarbeiter möchte dann das Ticket über das
+              Ticket-System an einen Support-Mitarbeiter weiterleiten. Wenn ein
+              Support-Mitarbeiter sofort verfügbar ist, kann er das Ticket
+              übernehmen und weiter daran arbeiten. Wenn alle
+              Support-Mitarbeiter im Gespräch sind, kann das Ticket für einen
+              Rückruf markiert werden, und ein Support-Mitarbeiter wird den
+              Kunden später zurückrufen. Alle erstellten Tickets sind im
+              Plattform-Ticket-System sichtbar, und jeder Support-Mitarbeiter
+              kann sie anzeigen und bearbeiten. Sobald das Problem in einem
+              Ticket gelöst ist, kann es von der zuständigen Person geschlossen
+              werden. Geschlossene Tickets erscheinen nicht mehr in der Liste
+              der offenen Tickets, sondern werden in die Liste der erledigten
+              Tickets verschoben. Das Ticket-System erleichtert somit die
+              Kommunikation und Zusammenarbeit der Support-Mitarbeiter und
+              ermöglicht eine effektive und schnelle Problemlösung., key:
+              -5eb55ff6
+            label: Text
+            name: '-5eb55ff6'
+            widget: text
+          - hint: 'Original text: 03, key: 603'
+            label: Text
+            name: '603'
+            widget: string
+          - hint: 'Original text: Fotoapp, key: 3af4b67d'
+            label: Text
+            name: 3af4b67d
+            widget: string
+          - hint: >-
+              Original text: Mobile Archivierung von Patientenuntersuchungen,
+              key: -7be08afc
+            label: Text
+            name: '-7be08afc'
+            widget: string
+          - hint: >-
+              Original text: Fotoapp ist ein Zusatzprodukt von MediDOK 2.5 und
+              dient als mobile Anwendung für Ärzte zur Verwaltung von
+              Patientenarchiven und -dokumenten. Mit der Fotoapp kann ein Arzt
+              über sein Handy Fotos von Untersuchungen machen und diese direkt
+              in der App speichern. Die App synchronisiert und lädt die Fotos
+              automatisch hoch. Zusätzlich bietet die Fotoapp die Möglichkeit,
+              bestimmte Patientendokumente zu suchen. Auf der Startseite der App
+              kann der Arzt die zuletzt verwendeten Patienten sehen, Fotos
+              machen, nach neuen, hochgeladenen Dokumenten im PVS-System suchen
+              und die neuesten Untersuchungen überprüfen.. Insgesamt ist die
+              FotoAPP ein nützliches Tool für Ärzte, um Patientendokumente und
+              Untersuchungsfotos effizient zu verwalten und zu organisieren.,
+              key: 6409e0f7
+            label: Text
+            name: 6409e0f7
+            widget: text
+          - hint: 'Original text: I’m ready to hit the ground running, key: 300bcdc7'
+            label: Text
+            name: 300bcdc7
+            widget: string
+          - hint: 'Original text: let’s talk, key: 581e3717'
+            label: Text
+            name: '581e3717'
+            widget: string
+          - hint: 'Original text: Project, key: 50c8e2f9'
+            label: Text
+            name: 50c8e2f9
+            widget: string
+          - hint: >-
+              Original text: © 2023All Rights Reserved. Design & Coded from
+              Hanchen Xing, key: 4da2166
+            label: Text
+            name: 4da2166
+            widget: string
+          - hint: 'Original text: Imprint, key: -29f92c17'
+            label: Text
+            name: '-29f92c17'
+            widget: string
+          - hint: 'Original text: Privacy, key: 5079bb68'
+            label: Text
+            name: 5079bb68
+            widget: string
+          - hint: 'Original text: Design Direction, key: -7d524463'
+            label: Text
+            name: '-7d524463'
+            widget: string
+          - hint: 'Original text: Meine Rolle:, key: 210ac5ca'
+            label: Text
+            name: 210ac5ca
+            widget: string
+          - hint: 'Original text: Problem, key: 50c55a7f'
+            label: Text
+            name: 50c55a7f
+            widget: string
+          - hint: 'Original text: Der Prozess, key: 412851a9'
+            label: Text
+            name: 412851a9
+            widget: string
+          - hint: 'Original text: UX, key: aa3'
+            label: Text
+            name: aa3
+            widget: string
+          - hint: >-
+              Original text: Das UX Ablaufdiagramm ist für die
+              Produktentwicklung essenziell, da es Daten klar visualisiert,
+              Fehler verringert, Effizienz erhöht und eine optimale
+              Ressourcennutzung sowie wertvolle Produktanalysen ermöglicht.,
+              key: -62c97f21
+            label: Text
+            name: '-62c97f21'
+            widget: text
+          - hint: 'Original text: Geschäftliche Auswirkungen, key: 27a391c2'
+            label: Text
+            name: 27a391c2
+            widget: string
+          - hint: 'Original text: Herausforderungen und Lösungen, key: -76ae2e82'
+            label: Text
+            name: '-76ae2e82'
+            widget: string
+          - hint: 'Original text: Highlight, key: 4ed7ac94'
+            label: Text
+            name: 4ed7ac94
+            widget: string
+          - hint: 'Original text: Resume/CV, key: b048575'
+            label: Text
+            name: b048575
+            widget: string
+          - hint: 'Original text: Download, key: 58f52ca8'
+            label: Text
+            name: 58f52ca8
+            widget: string
+          - hint: >-
+              Original text: Ich bin Han, ein UX und UI Designer, , key:
+              68dfd74d
+            label: Text
+            name: 68dfd74d
+            widget: string
+          - hint: >-
+              Original text: verantwortlich für das Design von digitalen , key:
+              6ed73de
+            label: Text
+            name: 6ed73de
+            widget: string
+          - hint: >-
+              Original text: Produkten für Unternehmen, die komplexe , key:
+              -4b9b045a
+            label: Text
+            name: '-4b9b045a'
+            widget: string
+          - hint: >-
+              Original text: digitale Business- oder medizinische , key:
+              -44455dac
+            label: Text
+            name: '-44455dac'
+            widget: string
+          - hint: 'Original text: Webanwendungen haben., key: 4eb41b0a'
+            label: Text
+            name: 4eb41b0a
+            widget: string
+          - hint: 'Original text: Senior Produkt- und UX Designer, key: -79233cd7'
+            label: Text
+            name: '-79233cd7'
+            widget: string
+          - hint: >-
+              Original text: Ich bin ein engagierter Produkte und UX Designer
+              mit mehrjähriger Erfahrung bei MediDOK im Bereich medizinischer
+              Softwarelösungen. Mein Hauptaugenmerk liegt darauf, die
+              Bedürfnisse unserer Kunden tiefgehend zu verstehen und darauf
+              basierend zielgerichtete Produkte zu kreieren. Ich bin versiert in
+              der strategischen Planung und Visualisierung von Produktkonzepten
+              und arbeite eng mit Entwicklungsteams zusammen, wobei ich
+              Design-Guidelines und Wireframes bereitstelle., key: 3d107ee1
+            label: Text
+            name: 3d107ee1
+            widget: text
+          - hint: >-
+              Original text: mediDOK Software Entwicklungs GmbH · Full-time,
+              key: -1c3cb85a
+            label: Text
+            name: '-1c3cb85a'
+            widget: string
+          - hint: 'Original text: 02/2021 – jetzt , key: -1724c1f0'
+            label: Text
+            name: '-1724c1f0'
+            widget: string
+          - hint: >-
+              Original text: Master of Arts in Design: Integrative Design, key:
+              129ded94
+            label: Text
+            name: 129ded94
+            widget: string
+          - hint: >-
+              Original text: In der Forschung konzentriere ich mich auf Themen,
+              bei denen das Transformationspotential von integrativem Denken und
+              Handeln neue Anwendungsmöglichkeiten schafft. Dabei muss ich mich
+              mit Methoden auseinandersetzen, die theoretisches Wissen,
+              technische Möglichkeiten und kreatives Wissen kombinieren, neue
+              Anwendungsmöglichkeiten schaffen und diese in innovative
+              Ergebnisse umwandeln., key: 6aebd5d9
+            label: Text
+            name: 6aebd5d9
+            widget: text
+          - hint: >-
+              Original text: Hochschule für Gestaltung und Kunst FHNW, Basel
+              Schweiz 06/2019 – 06/2020, key: 53636d7
+            label: Text
+            name: 53636d7
+            widget: string
+          - hint: >-
+              Original text: Master of Arts in Design: Human Computer
+              Interaction Design, key: -4af1999c
+            label: Text
+            name: '-4af1999c'
+            widget: string
+          - hint: >-
+              Original text: Der Schwerpunkt des Lerninhalts liegt auf
+              Interaktionsdesign, Human Factors & Ergonomie, multimodaler und
+              multisensorischer Mensch-Computer-Interaktion,
+              Audio-/Videoverarbeitung und Spieldesign, sowie Interface-Lösungen
+              für erweiterte/virtuelle Realität., key: b3b29e7
+            label: Text
+            name: b3b29e7
+            widget: text
+          - hint: >-
+              Original text: Muthesius KunsthochschuleKiel Germany02/2018 –
+              06/2019, key: -554b0b28
+            label: Text
+            name: '-554b0b28'
+            widget: string
+          - hint: >-
+              Original text: Bachelor of Science: Industrial Design, key:
+              2d47932
+            label: Text
+            name: 2d47932
+            widget: string
+          - hint: >-
+              Original text: Im Rahmen meines Bachelor-Studiums im
+              Industriedesign habe ich gelernt, dass das kreative Design von
+              alltäglichen Gebrauchsgegenständen nicht nur ästhetischen Wert
+              haben sollte. Es ist ebenso entscheidend, dass die Produkte
+              funktional sind und den praktischen Bedürfnissen der Nutzer
+              gerecht werden., key: 55e5519e
+            label: Text
+            name: 55e5519e
+            widget: text
+          - hint: >-
+              Original text: North China University of Technology09/2013 –
+              03/2017, key: 7b7f0042
+            label: Text
+            name: 7b7f0042
+            widget: string
+          - hint: 'Original text: Page Not Found, key: -40b0787c'
+            label: Text
+            name: '-40b0787c'
+            widget: string
+          - hint: >-
+              Original text: The page you are looking for doesn't exist or has
+              been moved, key: 556d64d8
+            label: Text
+            name: 556d64d8
+            widget: string
+          - hint: >-
+              Original text: Für mehr Einblick benötigst du ein Passwort., key:
+              -50786601
+            label: Text
+            name: '-50786601'
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
+          - hint: 'Original text: Kein Passwort?, key: 311b2413'
+            label: Text
+            name: 311b2413
+            widget: string
+          - hint: >-
+              Original text: Kein Problem, du kannst deine E-Mail hinterlassen,
+              um das Passwort zu erhalten., key: 5a46daf
+            label: Text
+            name: 5a46daf
+            widget: string
+          - hint: >-
+              Original text: Herzlichen Dank! Dein Beitrag ist eingegangen!,
+              key: -1bec6d06
+            label: Text
+            name: '-1bec6d06'
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: 'Original text: Insight /, key: 66bad987'
+            label: Text
+            name: 66bad987
+            widget: string
+          - hint: >-
+              Original text: Setzen Sie sich mit mir in Verbindung, um Design,
+              Strategie und Technik zu vereinen und das volle Potenzial der
+              Innovation auszuschöpfen., key: -634fd420
+            label: Text
+            name: '-634fd420'
+            widget: text
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: hanchen.xing@outlook.com, key: -3109952b'
+            label: Text
+            name: '-3109952b'
+            widget: string
+          - hint: 'Original text: Tel, key: 147fb'
+            label: Text
+            name: 147fb
+            widget: string
+          - hint: 'Original text: +49 01744788116, key: -3488081b'
+            label: Text
+            name: '-3488081b'
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /insight/, key: 590e98c6'
+            label: Link
+            name: 590e98c6
+            widget: string
+          - hint: 'Original link: /about/, key: 61642f31'
+            label: Link
+            name: 61642f31
+            widget: string
+          - hint: 'Original link: /contact-new/, key: 13764dcb'
+            label: Link
+            name: 13764dcb
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: /assets/documents/hanchen_xing.pdf, key: -600dbb82'
+            label: Link
+            name: '-600dbb82'
+            widget: string
+          - hint: >-
+              Original link: /assets/documents/hanchen_xingde.pdf, key:
+              -381a8e01
+            label: Link
+            name: '-381a8e01'
+            widget: string
+          - hint: 'Original link: #section-3, key: 3d95d688'
+            label: Link
+            name: 3d95d688
+            widget: string
+          - hint: >-
+              Original link: http://www.linkedin.com/in/hanchen-xing-442270ba,
+              key: 72bb3c9c
+            label: Link
+            name: 72bb3c9c
+            widget: string
+          - hint: >-
+              Original link: /assets/documents/mein-ablaufdiagramm.pdf, key:
+              -4dee86bf
+            label: Link
+            name: '-4dee86bf'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: i265000c5
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i52ed84c5
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2a1d34b7
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4490379b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6fca93f6'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-788b1ff6'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-57a23f7'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 268f4f29
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-784ac441'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1dc7c5aa'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-213176e8'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-16fd7604'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '689623'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2ab38c95
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-75705a5f'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-137c0172'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-5d794ba2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: b2f1c72
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 26b995ac
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7171ab23'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-29262065'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-7ecdf07d'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1a24c345
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2b1beb3c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-59bbcb0c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-376761a9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '0'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 28e72fa1
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-637bb1bc'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow

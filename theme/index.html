@@ -299,13 +299,19 @@
               role="listitem"
               class="collection-item w-dyn-item"
             >
-              <a href="{{ item.url }}" class="link-block w-inline-block">
+              <a
+                href="password.html?target={{ item.url }}"
+                class="link-block w-inline-block"
+              >
                 <div
                   class="div-block-15"
                   style="background-image: url('{{item.data.f_preview-image.url}}');"
                 ></div>
               </a>
-              <a href="{{ item.url }}" class="link-block-5 w-inline-block">
+              <a
+                href="password.html?target={{ item.url }}"
+                class="link-block-5 w-inline-block"
+              >
                 <div class="top-0-5em-bottom-1em">
                   <h1 class="heading3 gray">{{ item.data.f_descripttion }}</h1>
                 </div>
